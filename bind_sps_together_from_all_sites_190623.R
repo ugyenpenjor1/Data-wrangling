@@ -85,12 +85,13 @@ for(species_string in species_strings){
         
         # Bind the current data with the combined data
         combined_data <- bind_rows(combined_data, data)
-        
-        # Assign column names
-        colnames(combined_data) <- c("stn", "o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8", "o9")
+      
       }
     }
   }
+
+  # Change column names
+  colnames(combined_data) <- c("stn", "o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8", "o9")
   
   # Define the output file name
   output_file <- paste0(species_string, ".csv")

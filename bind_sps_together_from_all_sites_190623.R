@@ -16,7 +16,7 @@ print(dir_list)
 # Define folder names
 folder_names <- dir_list
 
-# Define the string to search for in the file names
+# Define the string to search for in the file names (these are mammal species found in Asia - not exhaustive though)
 search_strings <- c("Axis axis", "Axis porcinus", "Arctictis binturong", "Atherurus macrourus", "Aonyx cinereus", "Acerodon mackloti",
                     "Arctonyx hoevenii", "Arctonyx collaris", "Arctogalidia trivirgata", "Aeromys thomasi",
                     "Ailurus fulgens",

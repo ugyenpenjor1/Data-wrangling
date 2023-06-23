@@ -8,8 +8,8 @@ library(readr)
 library(stringr)
 
 # Get the folder names
-main_dir <- "your working directory containing many many many folders"
-dir_list <- list.dirs(main_dir, full.names=F, recursive=FALSE) 
+work_dir <- "your working directory containing many many many folders"
+dir_list <- list.dirs(work_dir, full.names=F, recursive=FALSE) 
 # full.names=F removes directory path
 # recursive=F excludes the main directory
 print(dir_list)
@@ -18,7 +18,7 @@ print(dir_list)
 folder_names <- dir_list
 
 # Define the string to search for in the file names (these are mammal species found in Asia - not exhaustive though)
-search_strings <- c("Axis axis", "Axis porcinus", "Arctictis binturong", "Atherurus macrourus", "Aonyx cinereus", "Acerodon mackloti",
+species_strings <- c("Axis axis", "Axis porcinus", "Arctictis binturong", "Atherurus macrourus", "Aonyx cinereus", "Acerodon mackloti",
                     "Arctonyx hoevenii", "Arctonyx collaris", "Arctogalidia trivirgata", "Aeromys thomasi",
                     "Ailurus fulgens",
                     "Bos gaurus", "Bos javanicus", "Bos taurus domesticus", "Bubalus bubalis", "Boselaphus tragocamelus", "Budorcas taxicolor",
@@ -60,23 +60,26 @@ search_strings <- c("Axis axis", "Axis porcinus", "Arctictis binturong", "Atheru
                     "Ursus thibetanus", 
                     "Viverra zibetha", "Viverra megaspila", "Viverra tangalunga", "Viverricula indica", "Vulpes bengalensis", "Vulpes vulpes")
 
-search_strings
+species_strings
 
-# Loop through each search string
-for(search_string in search_strings){
+# Loop through each species string
+for(species_string in species_strings){
   
   # Create an empty data frame to store the combined data
   combined_data <- data.frame()
   
   # Loop through each folder
   for(folder_name in folder_names){
+    
     # Get the list of files in the current folder
     file_list <- list.files(path=folder_name, full.names=TRUE)
     
     # Loop through each file
     for(file in file_list){
-      # Check if the file name contains the search string
-      if(grepl(search_string, file)){
+      
+      # Check if the file name contains the species string
+      if(grepl(species_string, file)){
+        
         # Import the file
         data <- read_csv(file)
         
@@ -90,7 +93,7 @@ for(search_string in search_strings){
   }
   
   # Define the output file name
-  output_file <- paste0(search_string, ".csv")
+  output_file <- paste0(species_string, ".csv")
   
   # Export the combined data as a CSV file
   write_csv(combined_data, output_file)

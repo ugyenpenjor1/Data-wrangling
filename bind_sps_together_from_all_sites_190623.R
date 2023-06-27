@@ -60,8 +60,6 @@ species_strings <- c("Axis axis", "Axis porcinus", "Arctictis binturong", "Ather
                     "Ursus thibetanus", 
                     "Viverra zibetha", "Viverra megaspila", "Viverra tangalunga", "Viverricula indica", "Vulpes bengalensis", "Vulpes vulpes")
 
-species_strings
-
 # Loop through each species string
 for(species_string in species_strings){
   

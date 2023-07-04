@@ -60,7 +60,7 @@ species_strings <- c("Axis axis", "Axis porcinus", "Arctictis binturong", "Ather
                     "Ursus thibetanus", 
                     "Viverra zibetha", "Viverra megaspila", "Viverra tangalunga", "Viverricula indica", "Vulpes bengalensis", "Vulpes vulpes")
 
-# Loop through each species string
+# Loop through each species
 for(species_string in species_strings){
   
   # Create an empty data frame to store the combined data
@@ -99,7 +99,6 @@ for(species_string in species_strings){
 }
 
 # Takes time...
-
 
 ################################ END ################################################
 

@@ -1,4 +1,4 @@
-# Written by Ugyen Penjor, June 2023
+# Ugyen Penjor, June 2023
 
 # Read multiple CSV files from multiple paths and bind them together 
 

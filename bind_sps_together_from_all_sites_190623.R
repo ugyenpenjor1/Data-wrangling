@@ -19,8 +19,7 @@ folder_names <- dir_list
 
 # Define the string to search for in the file names (these are mammal species found in Asia - not exhaustive though)
 species_strings <- c("Axis axis", "Axis porcinus", "Arctictis binturong", "Atherurus macrourus", "Aonyx cinereus", "Acerodon mackloti",
-                    "Arctonyx hoevenii", "Arctonyx collaris", "Arctogalidia trivirgata", "Aeromys thomasi",
-                    "Ailurus fulgens",
+                    "Arctonyx hoevenii", "Arctonyx collaris", "Arctogalidia trivirgata", "Aeromys thomasi", "Ailurus fulgens",
                     "Bos gaurus", "Bos javanicus", "Bos taurus domesticus", "Bubalus bubalis", "Boselaphus tragocamelus", "Budorcas taxicolor",
                     "Canis aureus", "Canis familiaris domesticus", "Canis lupus familiaris", "Cuon alpinus", "Cynogale bennettii",
                     "Catopuma temminckii", "Catopuma badia",
@@ -41,8 +40,7 @@ species_strings <- c("Axis axis", "Axis porcinus", "Arctictis binturong", "Ather
                     "Mustela kathiah", "Mustela nudipes", "Melogale everetti", "Melogale personata", "Menetes berdmorei", "Mustela altaica", "Mustela sibirica", "Melogale moschata",
                     "Manis javanica", "Manis pentadactyla", "Martes flavigula", "Mydaus javanensis", "Maxomys surifer", "Mellivora capensis",
                     "Melursus ursinus", "Moschus leucogaster", "Marmota himalayana",
-                    "Neofelis nebulosa", "Neofelis diardi", "Nesolagus netscheri", "Nasalis larvatus", "Nycticebus menagensis",
-                    "Naemorhedus goral",
+                    "Neofelis nebulosa", "Neofelis diardi", "Nesolagus netscheri", "Nasalis larvatus", "Nycticebus menagensis", "Naemorhedus goral",
                     "Ovis aries domesticus",
                     "Paguma larvata", "Paradoxurus hermaphroditus", "Pardofelis marmorata", "Petaurista philippensis", "Petaurista nobilis", "Pseudois nayaur",
                     "Prionailurus bengalensis", "Prionailurus planiceps", "Prionailurus rubiginosus", "Prionailurus viverrinus",

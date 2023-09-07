@@ -58,20 +58,19 @@ write.csv(lat_split, file="data_cleaning_GK_bird_Latin_name_contraction_RESULTS.
 
 # Extract only unique species names and produce contraction for the list
 
-head(lat_split)
+sps <- read.csv("GK_bird_raw_species_list.csv", header=T)
+head(sps)
+str(sps)
 
-lat <- cbind(lat, lat_split$new_column)
-head(lat)
-
-spsls <- unique(lat$Latin_name)
+spsls <- unique(sps$Latin_name)
 length(spsls)
 str(spsls)
 
 # Create a new data frame with only unique individuals
-unique_lat <- !duplicated(lat$Latin_name)
+unique_lat <- !duplicated(sps$Latin_name)
 str(unique_lat)
 
-unique_df <- subset(lat, unique_lat)
+unique_df <- subset(sps, unique_lat)
 str(unique_df)
 
 write.csv(unique_df, file="GK_bird_unique_species_list.csv", row.names=F)

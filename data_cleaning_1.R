@@ -1,6 +1,7 @@
 
+# Data wrangling
 
-dat <- read.csv("data_cleaning_GK_bird_to_segment.csv", header=T)
+dat <- read.csv("GK_bird_raw_species_list.csv", header=T)
 head(dat)
 str(dat)
 
@@ -16,7 +17,7 @@ library(dplyr)
 
 # Assign categories
 df <- dat %>%
-  mutate(B = case_when(
+  mutate(Rep=case_when(
     between(Dist_m, 0, 100) | between(Dist_m, 501, 600) | between(Dist_m, 1001, 1100) | between(Dist_m, 1501, 1600) ~ 1,
     between(Dist_m, 101, 200) | between(Dist_m, 601, 700) | between(Dist_m, 1101, 1200) | between(Dist_m, 1601, 1700) ~ 2,
     between(Dist_m, 201, 300) | between(Dist_m, 701, 800) | between(Dist_m, 1201, 1300) | between(Dist_m, 1701, 1800) ~ 3,
@@ -34,7 +35,8 @@ write.csv(df, file="data_cleaning_GK_bird_segmentation1.csv", row.names=F)
 
 # Contract Latin names by picking first four letters of Genus and species names
 
-lat <- read.csv("data_cleaning_GK_bird_Latin_name_contraction.csv", header=T)
+#lat <- read.csv("data_cleaning_GK_bird_Latin_name_contraction.csv", header=T)
+lat <- df
 head(lat)
 str(lat)
 
@@ -58,7 +60,8 @@ write.csv(lat_split, file="data_cleaning_GK_bird_Latin_name_contraction_RESULTS.
 
 # Extract only unique species names and produce contraction for the list
 
-sps <- read.csv("GK_bird_raw_species_list.csv", header=T)
+#sps <- read.csv("GK_bird_raw_species_list.csv", header=T)
+sps <- cbind(lat_split, "Latin_name"=df$Latin_name)
 head(sps)
 str(sps)
 
@@ -73,9 +76,10 @@ str(unique_lat)
 unique_df <- subset(sps, unique_lat)
 str(unique_df)
 
-write.csv(unique_df, file="GK_bird_unique_species_list.csv", row.names=F)
+write.csv(unique_df, file="GK_bird_unique_species_list_final.csv", row.names=F)
 
 ################################################################################
+
 
 
 

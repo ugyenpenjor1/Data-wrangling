@@ -80,6 +80,23 @@ write.csv(unique_df, file="GK_bird_unique_species_list_final.csv", row.names=F)
 
 ################################################################################
 
+# Prepare unique site with site characteristics
+
+site <- read.csv("GK_bird_raw_sites.csv", header=T)
+head(site)
+str(site)
+
+# Create a new data frame with only unique sites
+unique_site <- !duplicated(site$seg_1)
+str(unique_site)
+
+# Extract only unique sites
+site_fin <- subset(site, unique_site)
+str(site_fin)
+
+write.csv(site_fin, file="GK_bird_unique_sites_final.csv", row.names=F)
+
+################################################################################
 
 
 

@@ -74,7 +74,7 @@ str(unique_lat)
 unique_df <- subset(lat, unique_lat)
 str(unique_df)
 
-write.csv(lat_split, file="GK_bird_unique_species_list.csv", row.names=F)
+write.csv(unique_df, file="GK_bird_unique_species_list.csv", row.names=F)
 
 ################################################################################
 

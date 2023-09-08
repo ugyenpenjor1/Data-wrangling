@@ -32,7 +32,7 @@ str(dat)
 
 # Pivot the data
 result <- dat |>
-  distinct(seg_1, Rep, .keep_all=TRUE) |>   # only keeping unique site and replicate values
+  distinct(seg_1, Rep, .keep_all=TRUE) |>   # only keep unique site and replicate values
   pivot_wider(names_from=Rep, values_from=Julian) # fill each replicate with Julian day
 View(result)
 str(result)

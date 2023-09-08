@@ -1,16 +1,17 @@
 
-# I want to extract unique sites (removing duplicates), create 5 columns corresponding to
-# the unique values of the replicate column and fill in each cell with the 
+# I want to extract unique sites (removing duplicates) and create 5 columns corresponding to
+# the unique values of the replicate column (temporal replication) and fill the cells with 
 # Julian day
 
+# Load data 
 site <- read.csv("GK_bird_raw_sites.csv", header=T)
 head(site)
 str(site)
 
-# Convert date to Julian day
-# Since the date is in uniform character format, there was no neeef for additional steps,
+# Convert the date to Julian day
+# Since the date is in uniform character format, there was no need for additional steps,
 # the conversion was straightforward.
-# If this is not the case, you will have to do workaround to fix date first.
+# If this is not the case, you will have to do a workaround to fix the date first.
 
 site$Julian <- as.POSIXlt(site$Date)$yday
 str(site)
@@ -32,7 +33,7 @@ str(dat)
 # Pivot the data
 result <- dat |>
   distinct(seg_1, Rep, .keep_all=TRUE) |>   # only keeping unique site and replicate values
-  pivot_wider(names_from=Rep, values_from=Julian) # filling each replicate with Julian day value
+  pivot_wider(names_from=Rep, values_from=Julian) # fill each replicate with Julian day
 View(result)
 str(result)
 

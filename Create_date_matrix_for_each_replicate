@@ -1,0 +1,23 @@
+# I want to extract unique sites (removing duplicates), create 5 columns corresponding to
+# the unique values of the replicate column and fill in each cell with the 
+# Julian day
+
+library(dplyr)
+library(tidyr)
+
+str(site)
+
+# Extract only the required data
+dat <- site[, c(3, 5, 14)]
+head(dat)
+str(dat)
+
+# Pivot the data
+result <- dat |>
+  distinct(seg_1, Rep, .keep_all=TRUE) |>   # only keeping unique site and replicate values
+  pivot_wider(names_from=Rep, values_from=Julian) # filling each replicate with Julian day value
+View(result)
+str(result)
+
+write.csv(result, file="GK_bird_sites_Julian_day_for_replicates.csv", row.names=F)
+

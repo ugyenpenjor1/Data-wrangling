@@ -49,7 +49,7 @@ str(lat_split)
 
 # Extract the first four letters from both names and combine them in uppercase
 lat_split$new_column <- toupper(substr(lat_split$First_Name, 1, 4)) 
-lat_split$new_column <- paste(lat_split$new_column, toupper(substr(lat_split$Second_Name, 1, 4)), sep="")
+lat_split$new_column <- paste(lat_split$new_column, toupper(substr(lat_split$Second_Name, 1, 5)), sep="")
 
 head(lat_split)
 str(lat_split)
@@ -77,6 +77,14 @@ unique_df <- subset(sps, unique_lat)
 str(unique_df)
 
 write.csv(unique_df, file="GK_bird_unique_species_list_final.csv", row.names=F)
+
+################################################################################
+
+# Check for mismatches
+( mismatches <- unique(lat_split$new_column) != unique_df$new_column ) # should be all FALSE
+
+# Display elements in column 1 that don't match column 2
+( mismatched_elements <- unique(lat_split$new_column)[mismatches] ) # should be 0
 
 ################################################################################
 

@@ -1,7 +1,7 @@
 
 # Data wrangling
 
-dat <- read.csv("GK_bird_raw_species_list.csv", header=T)
+dat <- read.csv("GK_bird_RAW.csv", header=T)
 head(dat)
 str(dat)
 
@@ -27,9 +27,9 @@ df <- dat %>%
   ))
 
 # View the updated data frame
-df
+View(df)
 
-write.csv(df, file="data_cleaning_GK_bird_segmentation1.csv", row.names=F)
+write.csv(df, file="data_cleaning_GK_bird_Rep_created_120923.csv", row.names=F)
 
 ################################################################################
 
@@ -37,6 +37,8 @@ write.csv(df, file="data_cleaning_GK_bird_segmentation1.csv", row.names=F)
 
 #lat <- read.csv("data_cleaning_GK_bird_Latin_name_contraction.csv", header=T)
 lat <- df
+# lat$scientific_name <- df$Latin_name
+# lat$check <- ifelse(lat$Latin_name == lat$scientific_name, 1, 0)
 head(lat)
 str(lat)
 
@@ -54,7 +56,11 @@ lat_split$new_column <- paste(lat_split$new_column, toupper(substr(lat_split$Sec
 head(lat_split)
 str(lat_split)
 
-write.csv(lat_split, file="data_cleaning_GK_bird_Latin_name_contraction_RESULTS.csv", row.names=F)
+count_dh <- lat_split[, c(5, 28, 27, 18)]
+head(count_dh)
+
+write.csv(lat_split, file="data_cleaning_GK_bird_Rep_Latin_name_contracted_120923.csv", row.names=F)
+write.csv(count_dh, file="GK_bird_count_120923.csv", row.names=F)
 
 ################################################################################
 
@@ -62,21 +68,26 @@ write.csv(lat_split, file="data_cleaning_GK_bird_Latin_name_contraction_RESULTS.
 
 #sps <- read.csv("GK_bird_raw_species_list.csv", header=T)
 sps <- cbind(lat_split, "Latin_name"=df$Latin_name)
+sps <- lat_split
 head(sps)
 str(sps)
 
-spsls <- unique(sps$Latin_name)
+spsls <- unique(sps$scientific_name)
 length(spsls)
 str(spsls)
 
 # Create a new data frame with only unique individuals
-unique_lat <- !duplicated(sps$Latin_name)
+unique_lat <- !duplicated(sps$scientific_name)
 str(unique_lat)
 
 unique_df <- subset(sps, unique_lat)
 str(unique_df)
 
-write.csv(unique_df, file="GK_bird_unique_species_list_final.csv", row.names=F)
+sps <- unique_df[, c(28, 12, 13)]
+head(sps)
+
+write.csv(unique_df, file="data_cleaning_GK_bird_Rep_Latin_name_contracted_unique_sps_list_120923.csv", row.names=F)
+write.csv(sps, file="GK_bird_species_120923.csv", row.names=F)
 
 ################################################################################
 

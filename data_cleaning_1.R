@@ -116,6 +116,3 @@ str(site_fin)
 write.csv(site_fin, file="GK_bird_unique_sites_final.csv", row.names=F)
 
 ################################################################################
-
-
-

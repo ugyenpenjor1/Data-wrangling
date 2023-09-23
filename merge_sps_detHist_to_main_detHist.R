@@ -7,7 +7,6 @@ library(dplyr)
 spsDH <- read.csv("sps.csv")
 mainDH <- read.csv("main.csv")
 
-
 ################################################################################
 ################################################################################
 ################################################################################
@@ -25,7 +24,7 @@ matching_rows <- spsDH[spsDH$stn %in% mainDH$stn, ]
 new_data[matching_stn, 2:ncol(new_data)] <- matching_rows[match(new_data$stn[matching_stn], matching_rows$stn), -1]
 
 # Save the new data as a new CSV file
-write.csv(new_data, "path/to/output.csv", row.names = FALSE)
+write.csv(new_data, "output.csv", row.names = FALSE)
 
 ################################################################################
 ################################################################################
@@ -40,7 +39,6 @@ csv1_files <- list(
   "sps3.csv",
   "sps4.csv",
   "sps5.csv"
-  # Add more CSV 1 file paths as needed
 )
 
 # Loop through each CSV 1 file
@@ -62,7 +60,7 @@ for (csv1_file_path in csv1_files) {
   csv1_file_name <- tools::file_path_sans_ext(basename(csv1_file_path))
   
   # Save the new data as a new CSV file
-  write.csv(new_data, paste0("output_", csv1_file_name, ".csv"), row.names = FALSE)
+  write.csv(new_data, paste0("output_", csv1_file_name, ".csv"), row.names=FALSE)
 }
 
 
@@ -73,10 +71,10 @@ for (csv1_file_path in csv1_files) {
 # For hundreds of CSV files
 
 # Set the paths to the folder containing your CSV files
-folder_path <- "E:/UgyenP/myDocs/SEASIA_DATA/A_Merge_species/wrangling_230623/test_230923/input"
+folder_path <- "myDocs/wrangling_230623/input"
 
 # Set the path to save the output files
-output_path <- "E:/UgyenP/myDocs/SEASIA_DATA/A_Merge_species/wrangling_230623/test_230923/output"
+output_path <- "myDocs/wrangling_230623/output"
 
 # List all CSV files in the specified folder
 csv1_files <- list.files(path=folder_path, pattern="\\.csv$", full.names=TRUE)

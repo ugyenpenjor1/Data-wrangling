@@ -2,7 +2,7 @@
 # Read multiple CSV files in different paths and bind them together 
 
 ### ******************************************************************************** ###
-### IMPORTANT (!) : THIS SCRIPT SHOULD BE PLACED INSIDE THE "main_dir" FOLDER TO RUN ###
+### IMPORTANT (!): THIS SCRIPT SHOULD BE PLACED INSIDE THE "main_dir" FOLDER TO RUN ###
 ### ******************************************************************************** ###
 
 # Load packages
@@ -92,7 +92,7 @@ column_names <- c("stn", "o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8", "o9")
 
 ################################################################################
 
-# Combine all sites where species occurs and export as CSV under species name as file name
+# Combine all sites where species occur and export as CSV under a species name as file name
 
 # Loop through each search string
 for(search_string in search_strings){

@@ -75,7 +75,7 @@ search_strings
 
 ################################################################################
 
-# Or load a CSV with species names (no header)
+# Or load a CSV with species names (no header) - a single-column CSV
 # Must "character" string
 
 species_names <- read.csv("E:/UgyenP/myDocs/SEASIA_DATA/DATA_WRANGLING_07_10_23/SiteWise_sps_list/ALL_unique_species_list.csv", header=FALSE)

@@ -77,6 +77,7 @@ output_path <- "myDocs/wrangling_230623/output"
 
 # List all det hist files in the specified folder
 sps_files <- list.files(path=folder_path, pattern="\\.csv$", full.names=TRUE)
+head(read.csv(sps_files[1]))
 
 # Read main det hist as the template data frame
 dh_template <- read.csv("main.csv")

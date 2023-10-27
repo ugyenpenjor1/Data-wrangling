@@ -81,6 +81,10 @@ sps_files <- list.files(path=folder_path, pattern="\\.csv$", full.names=TRUE)
 # Read main det hist as the template data frame
 dh_template <- read.csv("main.csv")
 
+# Find row numbers with all NAs
+rows_with_all_na <- which(apply(dh_template, 1, function(row) all(is.na(row))))
+rows_with_all_na # should be 0 indicating no rows have all NAs in them
+
 # Loop through each species det hist file
 for(sps_file_path in sps_files){
   # Read the current species det hist file
